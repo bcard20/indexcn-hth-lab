@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>华体会 · 日常查询与对照阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce7c8 0%, #f7d9b3 25%, #f0cda1 60%, #ecbe8d 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 3rem;
+            color: #3c2f24;
+            line-height: 1.7;
+        }
+
+        .story-card {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 251, 244, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 36px 36px 32px 32px;
+            box-shadow: 0 20px 40px -10px rgba(110, 65, 30, 0.2), 0 10px 20px -6px rgba(80, 45, 15, 0.08);
+            padding: 2.8rem 2.6rem;
+            transition: box-shadow 0.25s ease;
+        }
+
+        @media (max-width: 580px) {
+            .story-card {
+                padding: 2rem 1.2rem;
+                border-radius: 28px;
+            }
+            body {
+                padding: 1.2rem 0.8rem 2.5rem;
+            }
+        }
+
+        /* 开场短句 —— 像一个小标题或引子 */
+        .opening-line {
+            font-size: 1.1rem;
+            letter-spacing: 0.4px;
+            color: #7e5a3b;
+            background: #f8ede2;
+            display: inline-block;
+            padding: 0.25rem 1.4rem 0.35rem 1.4rem;
+            border-radius: 40px;
+            margin-bottom: 1.4rem;
+            font-weight: 450;
+            border: 1px solid rgba(190, 140, 95, 0.15);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 540;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: #4f3420;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #6e5040;
+            border-left: 3px solid #d6ab7a;
+            padding-left: 1.1rem;
+            margin: 0.7rem 0 1.8rem 0;
+            font-weight: 380;
+        }
+
+        /* 承接段落 */
+        .passage {
+            margin-bottom: 2rem;
+        }
+
+        .passage p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #3e2e22;
+        }
+
+        .passage p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #b2743e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #c7925e;
+            transition: border-color 0.2s, background 0.15s;
+            padding: 0 2px;
+        }
+
+        .inline-link:hover {
+            border-bottom-style: solid;
+            border-color: #8f5b2b;
+            background: #f4e5d9;
+            border-radius: 4px;
+        }
+
+        /* 特点列表：温和的卡片式条目 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #f8efe6;
+            padding: 1.2rem 1rem 1rem 1.3rem;
+            border-radius: 24px;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 3px 10px rgba(150, 100, 60, 0.06);
+            border: 1px solid #ede0d2;
+        }
+
+        .feature-item:hover {
+            background: #f5e6d7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(130, 80, 45, 0.08);
+        }
+
+        .feature-symbol {
+            font-size: 1.5rem;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+            color: #a57647;
+        }
+
+        .feature-title {
+            font-weight: 530;
+            font-size: 1.05rem;
+            color: #4f3521;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #5f4636;
+            line-height: 1.5;
+        }
+
+        /* 温和的提问/FAQ 摘要 */
+        .faq-taste {
+            background: #f3e7db;
+            border-radius: 28px;
+            padding: 1.4rem 1.6rem;
+            margin: 2.2rem 0 1.6rem;
+        }
+
+        .faq-taste summary {
+            font-weight: 500;
+            color: #4e3523;
+            cursor: pointer;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-taste summary::before {
+            content: "☕";
+            font-size: 1.3rem;
+            opacity: 0.7;
+        }
+
+        .faq-taste p {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            color: #4e3b2d;
+        }
+
+        .quiet-close {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e3d1c0;
+            font-size: 0.98rem;
+            color: #5f4736;
+            text-align: left;
+        }
+
+        .quiet-close a {
+            color: #9f6d42;
+            text-decoration: none;
+            border-bottom: 1px solid #d6b38b;
+            font-weight: 450;
+        }
+
+        .quiet-close a:hover {
+            color: #704a29;
+            border-bottom: 1px solid #9b6d42;
+        }
+
+        .footer-note {
+            margin-top: 2.6rem;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #8c6e57;
+            letter-spacing: 0.3px;
+        }
+
+        /* 按钮感链接（用于句子外独立视觉点） */
+        .button-like {
+            display: inline-block;
+            background: #e3cdb8;
+            color: #3f2d1d;
+            padding: 0.3rem 1.3rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s, box-shadow 0.15s;
+            border: 1px solid #d8bca2;
+            font-weight: 460;
+        }
+
+        .button-like:hover {
+            background: #dbbca0;
+            box-shadow: 0 2px 8px rgba(150, 100, 60, 0.12);
+        }
+
+        .extra-space {
+            margin-top: 0.4rem;
+        }
+
+        hr {
+            margin: 2rem 0 0.2rem;
+            border: none;
+            border-top: 1px solid #e5d4c2;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="story-card">
+    <!-- 开场短句 -->
+    <div class="opening-line">📖 翻阅·对照·延伸</div>
+
+    <h1>华体会</h1>
+    <div class="subhead">一个习惯：日常查询与回看</div>
+
+    <!-- 承接段落：从日常查询、对照和延伸阅读的角度展开 -->
+    <div class="passage">
+        <p>
+            有时遇到一个说法、一条资讯或一组数据，想快速确认它的来龙去脉——这时候手边需要一个熟悉、安静的参考源。
+            让查询本身成为一种温和的日常，不必着急，也不带目的。就像翻开一本常用的手册，边看边对照，
+            偶尔顺着一两个线索延伸出去，反而能遇到意料之外的关联。
+        </p>
+        <p>
+            在反复浏览与标记的过程中，我渐渐把一些站点当作固定的“案头书”。
+            其中一处就是<a href="https://indexcn-hth.com.cn" class="inline-link">华体会</a>，
+            它像一本随时可以摊开的笔记，结构清晰又不给人压迫感。没有闪烁的推送，也没有渲染的催促，
+            只是把信息按逻辑放好，等你需要的时候自己去翻。
+        </p>
+    </div>
+
+    <!-- 特点列表：对应温和、日常查询、对照与延伸 -->
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-symbol">◈</div>
+            <div class="feature-title">对照友好</div>
+            <div class="feature-desc">版式宽松，便于并排浏览或摘录对照，减少视线跳转。</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-symbol">◈</div>
+            <div class="feature-title">延伸触点</div>
+            <div class="feature-desc">内容之间留有自然的关联入口，顺着读下去就能拓展线索。</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-symbol">◈</div>
+            <div class="feature-title">低噪翻阅</div>
+            <div class="feature-desc">没有过度动效或强制引导，像翻纸质页面一样安静。</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-symbol">◈</div>
+            <div class="feature-title">日常节奏</div>
+            <div class="feature-desc">适合零散时间看一小段，也适合坐下来慢慢梳理。</div>
+        </div>
+    </div>
+
+    <!-- 场景 / 提示 用FAQ摘要的形式呈现 -->
+    <details class="faq-taste">
+        <summary>几个我常用的打开方式</summary>
+        <p>
+            ▸ 午休后快速浏览一两个栏目，当作思维的“热身”。<br>
+            ▸ 写东西遇到模糊的表述时，直接去查对应条目，对照着修正。<br>
+            ▸ 周末挑一个主题，从头到尾顺一遍，顺便记录延伸出来的兴趣点。<br>
+            没有固定的步骤，按自己的节奏来就好。
+        </p>
+    </details>
+
+    <!-- 温和结尾：融入按钮感链接和安静收束 -->
+    <div class="quiet-close">
+        <span>如果你也喜欢这种翻阅式的体验，</span>
+        <a href="https://indexcn-hth.com.cn" class="button-like">华体会</a>
+        <span style="margin-left: 0.3rem;">是那种可以一直放在书签栏里的地方。</span>
+        <span style="display: block; margin-top: 0.8rem; color: #5f4636;">不需要特意安排，想到了就打开，翻两页，合上，继续手头的事。</span>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        日常查询 · 温和延伸
+    </div>
+</div>
+
+</body>
+</html>
