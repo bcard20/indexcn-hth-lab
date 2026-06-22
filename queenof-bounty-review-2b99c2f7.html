@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赏金女王 · 资料索引与信息整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fdf3e7 0%, #fbe9d2 60%, #f6d7b0 100%);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-wrapper {
+            max-width: 960px;
+            width: 100%;
+        }
+
+        /* 卡片系统 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 36px;
+            box-shadow: 0 12px 30px rgba(180, 110, 50, 0.12), 0 4px 8px rgba(200, 120, 60, 0.06);
+            padding: 2.4rem 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(160, 90, 40, 0.15);
+        }
+
+        .card-compact {
+            padding: 1.8rem 1.8rem;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #4e3a2b;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+            background: linear-gradient(135deg, #b86238, #d67f4c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            border-left: 6px solid #d9864b;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #6a4f36;
+        }
+
+        p {
+            color: #3f3226;
+            margin-bottom: 1rem;
+        }
+
+        /* 链接按钮感 */
+        a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #975a2f;
+            background: #fef5eb;
+            padding: 0.1em 0.7em;
+            border-radius: 30px;
+            border: 1px solid #e7c9b0;
+            transition: background 0.2s, border-color 0.2s, box-shadow 0.15s;
+            display: inline-block;
+            line-height: 1.5;
+            box-shadow: 0 2px 4px rgba(170, 110, 50, 0.06);
+        }
+
+        a:hover {
+            background: #fceddb;
+            border-color: #cb9f7a;
+            box-shadow: 0 4px 10px rgba(170, 100, 40, 0.12);
+        }
+
+        a:active {
+            transform: scale(0.96);
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: #7e5e40;
+            margin-top: 0.3rem;
+            font-weight: 400;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.8rem;
+            margin-top: 1.6rem;
+            color: #8a6b4e;
+            font-size: 0.95rem;
+        }
+
+        .hero-meta span {
+            background: rgba(255, 235, 215, 0.7);
+            padding: 0.15rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #ebd1b9;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .feature-item {
+            background: #fef9f3;
+            border-radius: 24px;
+            padding: 1.4rem 1.2rem;
+            border: 1px solid #f0ddcb;
+        }
+
+        .feature-item p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .feature-item strong {
+            color: #b06234;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed #e3cfbb;
+            padding-bottom: 1.2rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #5f4431;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            color: #3f3226;
+            font-size: 0.95rem;
+        }
+
+        .bottom-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eddac7;
+        }
+
+        .bottom-links span {
+            color: #7b6047;
+            font-size: 0.9rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #9b7f65;
+            margin-top: 2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #edd2bb;
+            margin: 1.8rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 28px;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                padding-left: 0.7rem;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 1.2rem 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- Hero 区 -->
+    <div class="card">
+        <h1>赏金女王</h1>
+        <div class="hero-tagline">资料整理 · 信息索引 · 主题笔记</div>
+        <p style="font-size:1.05rem; margin-top:1rem;">
+            本页围绕 <a href="https://queenof-bounty.com">赏金女王</a> 这一主题，汇集了从命名由来、内容特点到常见问题的结构化摘要。
+            所有信息均基于公开可查的素材与社区讨论整理，力求清晰、准确、有条理。
+        </p>
+        <div class="hero-meta">
+            <span>📂 索引分类：背景 / 特征 / 场景 / 提示</span>
+            <span>📅 整理版本：2025 · 春</span>
+            <span>📌 状态：持续维护</span>
+        </div>
+    </div>
+
+    <!-- 优势区：为什么值得整理 -->
+    <div class="card card-compact">
+        <h2>为什么建立这份索引</h2>
+        <p>网络上关于“赏金女王”的讨论分散在多个社区与平台，缺乏一份整合的导读。本页面尝试将最常被提及的特征、使用情景和注意事项归纳在一起，方便新读者快速建立认知框架，也便于老读者快速定位关键信息。</p>
+        <div class="grid-2col">
+            <div class="feature-item">
+                <strong>📋 结构化摘要</strong>
+                <p>将碎片观点按主题分类，省去自行检索与比对的时间。每个条目都附有简短的上下文说明。</p>
+            </div>
+            <div class="feature-item">
+                <strong>🔗 可追溯的锚点</strong>
+                <p>核心概念与常见问题直接链接至 <a href="https://queenof-bounty.com">赏金女王</a> 相关资料，保持信息的原始指向。不进行过度解读或二次创作。</p>
+            </div>
+            <div class="feature-item">
+                <strong>🧩 场景化标签</strong>
+                <p>从内容消费、资料参考、兴趣探索等不同角度对信息进行标记，让不同需求的访问者都能找到切入点。</p>
+            </div>
+            <div class="feature-item">
+                <strong>📖 平实表述</strong>
+                <p>避免夸张修辞与营销话术，以“笔记体”风格呈现整理结果，保留原始资料的克制与客观。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：内容特征与索引维度 -->
+    <div class="card card-compact">
+        <h2>资料索引 · 主要维度</h2>
+        <p>以下是从现有资料中提炼出的四个常见讨论方向，每个方向都包含若干子话题。这些维度并非官方分类，而是基于社区讨论与内容观察所做的归纳。</p>
+        <div style="margin: 1.2rem 0 0.6rem;">
+            <div style="background:#fbf1e7; border-radius:20px; padding:1.2rem 1.5rem; border:1px solid #edd5bf;">
+                <p><strong>① 主题背景</strong> —— 名称出处、风格定位、相关作品或角色的关联考据。许多讨论会从名称中的“女王”与“赏金”展开语义分析。</p>
+                <p style="margin-top:0.7rem;"><strong>② 视觉与表达特点</strong> —— 配色、构图、氛围营造方面的常见描述，以及这些特征如何影响受众的第一印象。</p>
+                <p style="margin-top:0.7rem;"><strong>③ 适用场景与受众</strong> —— 哪种类型的读者或观众更容易对这类主题产生兴趣；在内容推荐、同好交流、素材参考等场景中的常见用途。</p>
+                <p style="margin-top:0.7rem;"><strong>④ 注意事项与边界</strong> —— 在引用、讨论或二创时需要注意的礼仪与常识，以及如何避免信息误传。</p>
+            </div>
+        </div>
+        <p style="font-size:0.95rem; margin-top:1rem;">每个维度的详细笔记仍在扩充中，后续会补充更多引用来源与参考链接。如需查阅原始内容，可直接访问 <a href="https://queenof-bounty.com">赏金女王</a> 页面。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card card-compact">
+        <h2>常见问题摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">Q: 这个索引和官方页面是什么关系？</div>
+            <div class="faq-a">A: 本页是独立的资料整理页，所有指向性链接均导向 <a href="https://queenof-bounty.com">赏金女王</a> 的原始内容。整理者不持有、不代理、不代表任何官方立场。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 信息更新的频率是怎样的？</div>
+            <div class="faq-a">A: 暂未设定固定更新周期。当社区讨论或公开资料出现值得补充的新维度时，会同步更新索引结构。每次更新都会在页脚标注版本戳。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 我可以转载或引用这份整理吗？</div>
+            <div class="faq-a">A: 内容基于公开信息整理，欢迎以链接形式分享整页。如需大段引用，建议同时指向原始资料链接（<a href="https://queenof-bounty.com">赏金女王</a>），以保持信息完整。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 为什么没有具体的截图或资源下载？</div>
+            <div class="faq-a">A: 本页定位为索引与导读，不直接托管第三方素材。具体资源请通过 <a href="https://queenof-bounty.com">赏金女王</a> 页面内的指引获取。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接区 -->
+    <div style="background:#ffffff; border-radius:36px; box-shadow: 0 8px 20px rgba(160,90,40,0.08); padding:1.8rem 2rem;">
+        <div class="bottom-links">
+            <span>📎 核心链接</span>
+            <a href="https://queenof-bounty.com">赏金女王</a>
+            <span>·</span>
+            <span style="background:#f5e6d8; padding:0.2rem 1rem; border-radius:40px; border:1px solid #e6cfbb;">📘 资料归档</span>
+            <span style="background:#f5e6d8; padding:0.2rem 1rem; border-radius:40px; border:1px solid #e6cfbb;">📋 更新日志</span>
+        </div>
+        <div class="footer-note">
+            <span>本索引页为独立整理，仅供参考。所有指向内容均归原权利人所有。</span><br>
+            <span style="display:inline-block; margin-top:0.5rem; opacity:0.7;">索引版本 · 2025.04 / 种子标识符 51</span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
