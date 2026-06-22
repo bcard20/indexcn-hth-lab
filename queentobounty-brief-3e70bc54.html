@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赏金女王 · 资讯与指引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f2f0;
+            color: #2a2a2a;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(145deg, #3d3d3d 0%, #1e1e1e 100%);
+            color: #f0ede8;
+            padding: 48px 32px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 350;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #e3d8c6;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255,255,240,0.15);
+            display: inline-block;
+            padding-top: 12px;
+            margin-top: 6px;
+        }
+        /* 背景说明卡片 */
+        .bg-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px 28px;
+            margin-bottom: 28px;
+            border: 1px solid #e2ddd7;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+        }
+        .bg-card h2 {
+            font-weight: 400;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: #3b3b3b;
+            border-left: 6px solid #b6a188;
+            padding-left: 16px;
+        }
+        .bg-card p {
+            margin-bottom: 16px;
+        }
+        .bg-card p:last-child {
+            margin-bottom: 0;
+        }
+        /* 三段式场景卡片 */
+        .scene-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .scene-item {
+            background: #ffffff;
+            flex: 1 1 260px;
+            border-radius: 16px;
+            padding: 24px 22px;
+            border: 1px solid #e0dbd4;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s;
+        }
+        .scene-item:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        }
+        .scene-item h3 {
+            font-weight: 400;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #4e3e2e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scene-item h3::before {
+            content: "▹";
+            color: #9b8a74;
+            font-size: 1.4rem;
+        }
+        .scene-item p {
+            font-size: 0.95rem;
+            color: #3f3f3f;
+            margin-bottom: 6px;
+        }
+        .scene-item .note {
+            font-size: 0.85rem;
+            color: #6f6a64;
+            background: #f5f2ed;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        /* 行内链接整合段落——尾页访问提示 */
+        .footer-note {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px 28px;
+            margin-top: 10px;
+            border: 1px solid #e2ddd7;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+            font-size: 0.98rem;
+        }
+        .footer-note a {
+            color: #4d3b28;
+            text-decoration: none;
+            border-bottom: 1px dashed #b6a188;
+            font-weight: 450;
+        }
+        .footer-note a:hover {
+            border-bottom: 2px solid #7d6b55;
+        }
+        .footer-note .tag {
+            display: inline-block;
+            background: #eae7e0;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #4d3b28;
+            margin-right: 6px;
+        }
+        .faq-mini {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 18px;
+            border-top: 1px solid #e7e2da;
+            padding-top: 20px;
+        }
+        .faq-mini dt {
+            font-weight: 500;
+            color: #3b3b3b;
+            flex: 0 0 100%;
+            font-size: 0.95rem;
+        }
+        .faq-mini dd {
+            margin-left: 0;
+            font-size: 0.9rem;
+            color: #54514c;
+            background: #f6f3ee;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .faq-mini dd strong {
+            font-weight: 400;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd8d0;
+            margin: 24px 0 12px;
+        }
+        .footnote-extra {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #7b756d;
+            margin-top: 8px;
+        }
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero { padding: 32px 20px; }
+            .scene-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 横幅 hero -->
+    <div class="hero">
+        <h1>赏金女王 · 主题笔记</h1>
+        <div class="sub">日常查询 · 对照索引 · 延伸阅读</div>
+    </div>
+
+    <!-- 背景说明卡片 -->
+    <div class="bg-card">
+        <h2>从「赏金女王」开始</h2>
+        <p>在信息碎片化的时候，我们常常需要某个清晰、集中的介绍页来快速建立认知。<strong>赏金女王</strong> 这个词本身带有故事感和指向性，无论你是因为偶然看到、朋友推荐，还是在整理关键词时遇到，都可以在这里找到一份经过整理的背景与场景说明。</p>
+        <p>以下内容并非教程或攻略，而是围绕关键词展开的日常参考信息——方便你对照、筛选，或者作为延伸阅读的起点。</p>
+    </div>
+
+    <!-- 三段自然介绍 (杂志专题式) -->
+    <div class="scene-grid">
+        <div class="scene-item">
+            <h3>日常查询场景</h3>
+            <p>当你在浏览器或笔记里录入「赏金女王」时，可能只是想确认这个词的基本含义、关联语境，或是核实某个细节。这个页面把零散的信息做了卡片化整理，省去反复搜索的精力。</p>
+            <div class="note">📌 可用于快速对照名称、背景、常见描述</div>
+        </div>
+        <div class="scene-item">
+            <h3>对照索引参考</h3>
+            <p>不同平台、不同时间对同一个关键词的描述常有差异。这里不提供唯一答案，而是把相对稳定的背景和特点列出来，方便你在阅读其他资料时进行比对、验证，避免信息混淆。</p>
+            <div class="note">📌 适合作为关键词辅助记忆的锚点</div>
+        </div>
+        <div class="scene-item">
+            <h3>延伸阅读助手</h3>
+            <p>如果你正在写文章、做清单、整理兴趣列表，或者只是单纯想了解更多，这里的摘要和提示可以帮你节省前期浏览时间。后续也可以作为书签页，随时回来查阅基础信息。</p>
+            <div class="note">📌 保持简洁，不堆砌冗余资料</div>
+        </div>
+    </div>
+
+    <!-- 尾页访问提示 + FAQ摘要 + 嵌入链接 -->
+    <div class="footer-note">
+        <p><span class="tag">🔍 进一步</span> 如果你希望浏览更完整的介绍、动态或官方相关内容，可以前往 <a href="https://queentobounty.com">赏金女王</a> 阅读原始信息。那里聚合了更多细节，适合需要深入了解的朋友。</p>
+        
+        <dl class="faq-mini">
+            <dt>❓ 常见简短摘录</dt>
+            <dd><strong>Q：</strong> 这个页面和官网有什么区别？</dd>
+            <dd><strong>A：</strong> 本页是经过整理的静态卡片介绍，偏重日常参考；官网 <a href="https://queentobounty.com" style="border-bottom:1px solid #ccc;">赏金女王</a> 则包含完整内容与最新动态。</dd>
+            <dd><strong>Q：</strong> 信息可靠吗？</dd>
+            <dd><strong>A：</strong> 基于公开可查的客观描述整理，不包含主观推测或夸张承诺，可作为对照使用。</dd>
+            <dd><strong>Q：</strong> 我可以分享这个页面吗？</dd>
+            <dd><strong>A：</strong> 当然，作为导航或参考页都很合适。</dd>
+        </dl>
+        <hr>
+        <div class="footnote-extra">—— 整理于日常查询 · 卡片版本 ——</div>
+    </div>
+</div>
+</body>
+</html>
